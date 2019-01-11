@@ -88,7 +88,7 @@ public class CryptoLib {
 		}
 		return 0;
 	}
-
+	
 	/**
 	 * Returns 0 if "n" is a Fermat Prime, otherwise it returns the lowest
 	 * Fermat Witness. Tests values from 2 (inclusive) to "n/3" (exclusive).
@@ -96,23 +96,26 @@ public class CryptoLib {
 	public static int FermatPT(int n) {
 
 		for(int i =2; i<n/3; i++) {
-			if(EEA(i,n)[0]!=1) {
-				return 0;
-			}
-			if(bigMod(i,n-1,n) != 1) {
+			if(bigmod(i,n-1, n) != 1) {
 				return i;
 			}
 		}
-
 		return 0;
 	}
-	public static int bigMod(int a, int b, int m) {
-		if(b==0) {
-			return 0;
-		}
-		return ((a%m)*(bigMod(a,b-1,m)%m))%m;
-
-	}
+	//Helper function to compute modulu for large numbers
+	private static int bigmod(int A, int B, int C) {    
+        /// Base cases  
+	    if (A == 0)  
+	        return 0;  
+	    if (B == 0)  
+	        return 1;  
+	    long y;  
+	     
+        y = A % C;  
+        y = (y * bigmod(A, B - 1, C) % C) % C;  
+	      
+	    return (int)((y + C) % C);
+    } 
 	/**
 	 * Returns the probability that calling a perfect hash function with
 	 * "n_samples" (uniformly distributed) will give one collision (i.e. that
@@ -120,7 +123,12 @@ public class CryptoLib {
 	 * different output values the hash function can produce.
 	 **/
 	public static double HashCP(double n_samples, double size) {
-		return -1;
+		double res=1.0;
+		for (int i =1;i<n_samples;i++) {
+			res *= 1-(i/size);
+		}
+
+		return 1-res;
 	}
 
 }
