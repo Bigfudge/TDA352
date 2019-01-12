@@ -1,0 +1,11 @@
+Decrypting CBC with simple XOR
+
+Name: Simon Persson
+Personnummer: 19950307-4511
+
+First the k is calculated, k= c1+IV+c0. This is then used to calculate the messege m, m_i= c_i+k+c_i-1.
+
+The message was:
+"199503074511I decrypted a CBC message and all I got was this lousy sentence.00000000"
+
+

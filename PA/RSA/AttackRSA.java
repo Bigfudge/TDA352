@@ -64,6 +64,9 @@ public class AttackRSA {
 
 		return cbrt(res.mod(bigN));
 	}
+
+	
+	
 	static public BigInteger cbrt(BigInteger val) {
 		return root(3, new BigDecimal(val)).toBigInteger();
 	}

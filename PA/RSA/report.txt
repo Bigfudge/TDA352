@@ -1,0 +1,6 @@
+Attacking RSA
+
+Name: Simon Persson
+Personnummer: 19950307-4511
+
+m^3 is computed with the Chinese Remainder Theorem and then the cbrt is used to get m. The decoded text is: Alan Turing.

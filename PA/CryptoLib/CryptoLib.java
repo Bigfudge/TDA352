@@ -47,8 +47,6 @@ public class CryptoLib {
 		result[2] = oldT;
 		return result;
 	}
-
-
 	/**
 	 * Returns Euler's Totient for value "n".
 	 **/

@@ -1,0 +1,8 @@
+Special Soundness of Fiat-Shamir sigma-protocol
+
+Name: Simon Persson
+Personnummer: 19950307-4511
+
+Finds the two runs with the same R. Calculates the mod inverse of challange(s) an multiplys it with s mod N and ruturns the value. The decoded message was: 
+
+"It's amazing that the amount of news that happens in the world every day always just exactly fits the newspaper. --------- Jerry Seinfeld"

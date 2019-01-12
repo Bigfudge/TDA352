@@ -1,0 +1,19 @@
+A Math Library for Cryptograpy
+
+Name: Simon Persson
+Personnummer: 19950307-4511
+
+Extended Euclidean Algorithm:
+Start by initiating variables(t, oldT, s, oldS, r, oldR and q). Loops while r is not zero and updates the values according to the algorithm. When r reaches zero the result is resturned.
+
+Euler's Phi function:
+All values 0 < i < n is checked if gcd(i,n)=1. For each i that satisfies gcd(i,n)=1 the result is incremented by 1. A help-function for gcd was created.  
+
+Modular Inverse:
+Checks all values 0<x<m if it (n*x)=1 mod m and returns x if one value is found, oherwise 0.
+
+Fermat Primality test:
+Tests all values from 2 to n/3 and returns 0 if it is a Fermat Prime, otherwise the lowest Fermat witness. A helper-function that computes modulu for large numbers using recursion was constructed.
+
+Hash collision probability:
+Looping n_samples times and multiplying the the terms according to the pigeonhole principle. Since this calculates the probability that we do not get a collision we return 1-p.

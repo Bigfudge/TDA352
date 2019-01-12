@@ -1,0 +1,6 @@
+Attacking ElGamal
+
+Name: Simon Persson
+Personnummer: 19950307-4511
+
+The correct random number is found by computing r for all possible milliseconds (0-999)  and testing if c1 = g^r mod p. When the correct r is found the message m is calculated by m= c2*y^-r mod p. The decoded text is:  Bruce Schneier knows the state of schroedinger's cat.
