@@ -43,20 +43,43 @@ public class ElGamal {
       BigInteger y, int year, int month, int day, int hour, int minute,
       int second, BigInteger c1, BigInteger c2) {
       BigInteger tmp = BigInteger.ZERO;
-      for (int i =0;i<100 ;i++ ) {
-        int r = getRand(year, month, day, hour, minute, second, i);
-        if(c1.equals(g.pow(r))){
-          BigInteger expo = y.multiply(BigInteger.valueOf(-r));
-          tmp= g.pow(expo.intValue());
+      BigInteger r = null;
+      for (int i =0;i<1000 ;i++ ) {
+        r = getRand(year, month, day, hour, minute, second, i);
+        if(c1.equals(g.modPow(r,p))){
           break;
         }
       }
-    return c2.multiply(tmp);
+    BigInteger inv = y.modPow(r.negate(),p);
+
+    return c2.multiply(inv).mod(p);
   }
-  private static int getRand(int year, int month, int day, int hour, int minute, int second, int milli){
-      int res =  (int)(year*Math.pow(10,10)+month*Math.pow(10,8)+day*
-              Math.pow(10,6)+hour*Math.pow(10,4)+minute*Math.pow(10,2)+second+milli);
+  private static BigInteger getRand(int year, int month, int day, int hour, int minute, int second, int milli){
+      BigInteger y=  BigInteger.valueOf(year);
+      BigInteger ye= BigInteger.TEN.pow(10);
+
+      BigInteger m=  BigInteger.valueOf(month);
+      BigInteger me= BigInteger.TEN.pow(8);
+      
+      BigInteger d=  BigInteger.valueOf(day);
+      BigInteger de= BigInteger.TEN.pow(6);
+      
+      BigInteger h=  BigInteger.valueOf(hour);
+      BigInteger he= BigInteger.TEN.pow(4);
+      
+      BigInteger min=  BigInteger.valueOf(minute);
+      BigInteger mine= BigInteger.TEN.pow(2);
+      
+      BigInteger s=  BigInteger.valueOf(second);      
+      BigInteger mil=  BigInteger.valueOf(milli);
+
+      BigInteger res= y.multiply(ye)
+                      .add(m.multiply(me))
+                      .add(d.multiply(de))
+                      .add(h.multiply(he))
+                      .add(min.multiply(mine))
+                      .add(s)
+                      .add(mil);
       return res;
   }
-  
 }
